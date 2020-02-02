@@ -1,0 +1,32 @@
+@startuml
+
+rectangle node.js
+rectangle Electron <<libary>>
+
+rectangle npm
+rectangle vsc [
+    Visual Studio Code
+]
+interface nodegyp [
+    gyp
+]
+interface cares [
+    c-ares
+] 
+
+Electron --> npm 
+Electron --> Chromium
+vsc -- Electron
+npm -- node.js: Packagemanager
+Electron -- node.js
+node.js -left- nodegyp: "Build-Tool"
+
+node.js -- V8
+node.js -- libuv
+node.js -- llhttp
+node.js -- cares
+node.js -- OpenSSL
+node.js -- zlib
+node.js -- gtest
+nodegyp -left- Python: "Wrapper C++ Build-Tools"
+@enduml
